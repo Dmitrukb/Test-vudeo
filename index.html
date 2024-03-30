@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Full Screen Video</title>
+<style>
+    #video-container {
+        position: relative;
+        width: 100%;
+        max-width: 800px;
+    }
+    video {
+        width: 100%;
+        height: auto;
+    }
+    #fullscreen {
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        z-index: 999;
+    }
+</style>
+</head>
+<body>
+
+<div id="video-container">
+    <video id="myVideo" controls allowfullscreen>
+        <source src="https://images-assets.nasa.gov/video/jcs2023m000039_Space%20to%20Ground_489_230908/jcs2023m000039_Space%20to%20Ground_489_230908~medium.mp" type="video/mp4">
+        Your browser does not support the video tag.
+    </video>
+    <button id="fullscreen">Fullscreen</button>
+</div>
+
+<script>
+    const fullscreenButton = document.getElementById('fullscreen');
+    const videoElement = document.getElementById('myVideo');
+
+    fullscreenButton.addEventListener('click', () => {
+        if (videoElement.requestFullscreen) {
+            videoElement.requestFullscreen();
+        } else if (videoElement.mozRequestFullScreen) { /* Firefox */
+            videoElement.mozRequestFullScreen();
+        } else if (videoElement.webkitRequestFullscreen) { /* Chrome, Safari and Opera */
+            videoElement.webkitRequestFullscreen();
+        } else if (videoElement.msRequestFullscreen) { /* IE/Edge */
+            videoElement.msRequestFullscreen();
+        }
+    });
+</script>
+
+</body>
+</html>
