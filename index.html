@@ -25,16 +25,18 @@
 <body>
 
 <div id="video-container">
-    <video id="myVideo" controls allowfullscreen playsinline>
+    <video id="myVideo" controls allowfullscreen>
         <source src="video.mp4" type="video/mp4">
         Your browser does not support the video tag.
     </video>
+    <button id="fullscreen">Fullscreen</button>
 </div>
 
 <script>
+    const fullscreenButton = document.getElementById('fullscreen');
     const video = document.getElementById('myVideo');
 
-    video.addEventListener('click', () => {
+    fullscreenButton.addEventListener('click', () => {
         if (video.requestFullscreen) {
             video.requestFullscreen();
         } else if (video.mozRequestFullScreen) { /* Firefox */
